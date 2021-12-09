@@ -7,8 +7,6 @@ public class Main {
 
     public static LocalTime startHours;
     public static LocalTime closingHours;
-    public static ArrayList<String> beverages;
-    public static ArrayList<String> food;
     public static ArrayList<Recipe> bevRecipes;
     public static ArrayList<Recipe> foodRecipes;
 
@@ -69,7 +67,6 @@ public class Main {
         foodRecipes.add(baconSandwich);
         foodRecipes.add(tomatoWrap);
 
-
         //can get timestamp next time and throw exception if store is closed.
         System.out.println("Hello, welcome to the store, what can I get for you today?");
         Scanner sc = new Scanner(System.in);
@@ -77,18 +74,13 @@ public class Main {
         OrderManagement om = new OrderManagement();
 
         do {
-            try {
-                om.addItem(showMenu());
-                System.out.println("Anything else that you want to order? (Y/N):");
-                if (sc.nextLine().equals("Y")) {
-                    om.addItem(showMenu());
-                } else {
-                    break;
-                }
-            } catch (Exception e) {
-                System.out.println("Number does not exist. Try again");
+            om.addItem(showMenu());
+            System.out.println("Anything else that you want to order? (Y/N):");
+
+            if (!sc.nextLine().equals("Y")) {
+                break;
             }
-        } while (true) ;
+        } while (true);
 
         System.out.println("Your total order: ");
         om.printList();
@@ -106,42 +98,53 @@ public class Main {
 
     }
 
-    public static Recipe showMenu() throws Exception {
-        System.out.println("Type 1 to look at the beverage menu, or 2 to look at the food menu:");
+    public static int showMenuCategory() {
         Scanner sc = new Scanner(System.in);
-        int typeInput = sc.nextInt();
-        Recipe newRecipe = null;
+        int typeInput;
 
-        if (typeInput == 1) {
-           // System.out.println(beverages);
-            for (int i = 0; i < bevRecipes.size(); i++){
-                System.out.println((i + 1) + ". " + bevRecipes.get(i).name);
-            }
-            System.out.println("Enter the number to place your order: ");
-            int bevInput = sc.nextInt();
-            if (bevInput >= bevRecipes.size() + 1) {
-                throw new Exception("Number does not exist!");
-            }
-            newRecipe = bevRecipes.get(bevInput - 1);
-            System.out.println("You have ordered " + newRecipe.name);
-            return newRecipe;
-        } else if (typeInput == 2) {
-          //  System.out.println(food);
-            for (int i = 0; i < foodRecipes.size(); i++){
-                System.out.println((i + 1) + ". " + foodRecipes.get(i).name);
-            }
-            System.out.println("Enter the number to place your order: ");
-            int foodInput = sc.nextInt();
-            if (foodInput >= foodRecipes.size() + 1) {
-                throw new Exception("Number does not exist!");
-            }
-            newRecipe = foodRecipes.get(foodInput - 1);
-            System.out.println("You have ordered " + newRecipe.name);
-            return newRecipe;
-        } else {
-            System.out.println("That's not a valid number! Try again.");
-            showMenu();
+        while (true) {
+            System.out.println("Type 1 to look at the beverage menu, or 2 to look at the food menu:");
+            typeInput = sc.nextInt();
+            if (typeInput == 1 || typeInput == 2) break;
+            System.out.println("Wrong number, please try again :) ");
         }
-        return newRecipe;
+
+        return typeInput;
+    }
+
+    public static Recipe showMenu() {
+        // Either get 1 for food or 2 for food
+        int category = showMenuCategory();
+
+        // Store the list of choices depending the category selected by the user
+        ArrayList<Recipe> currentChoices;
+        if (category == 1) {
+            currentChoices = bevRecipes;
+        } else {
+            currentChoices = foodRecipes;
+        }
+
+        Recipe selectedRecipe = null;
+        while (selectedRecipe == null) {
+            // Display the choices available
+            for (int i = 0; i < currentChoices.size(); i++) {
+                System.out.println((i + 1) + ". " + currentChoices.get(i).name);
+            }
+
+            // Prompt the user for a choice
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("Enter the number to place your order: ");
+            int input = sc.nextInt();
+
+            if (input >= currentChoices.size() + 1) {
+                System.out.println("Wrong number, try again");
+            } else {
+                selectedRecipe = currentChoices.get(input - 1);
+                System.out.println("You have ordered " + selectedRecipe.name);
+            }
+        }
+
+        return selectedRecipe;
     }
 }

@@ -16,6 +16,28 @@ public class OrderManagement {
         }
     }
 
+    /**
+     * Save the order to the database
+     * - Connect to the SQLite database
+     * - Create the query
+     * -- Orders: Id (auto-increment), customer_name, number_items, total_price
+     * - Execute the query
+     */
+    public void save() {
+
+    }
+
+    /**
+     * List the orders from the database
+     * - Connect to the SQLite database
+     * - Create the query
+     * - Execute the query
+     * - List the results
+     */
+    public void showOrders(){
+
+    }
+
     public void printList(){
         for (Recipe item : items) {
             System.out.println(item.name + ", " + item.price + ".");
