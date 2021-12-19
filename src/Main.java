@@ -9,6 +9,7 @@ public class Main {
     public static LocalTime closingHours;
     public static ArrayList<Recipe> bevRecipes;
     public static ArrayList<Recipe> foodRecipes;
+    public static int customerId;
 
     public static void main(String[] args) {
         startHours = LocalTime.parse("08:00:00", DateTimeFormatter.ofPattern("HH:mm:ss"));
@@ -84,16 +85,21 @@ public class Main {
 
         System.out.println("Your total order: ");
         om.printList();
-        double total = om.countTotal();
+        double totalPrice = om.countTotal();
         double tax = om.countTax();
-        System.out.printf("\nYour total will be $%.2f + $%.2f sales tax = $%.2f. What's your name?", total, tax,
-                (total + tax));
+        System.out.printf("\nYour total will be $%.2f + $%.2f sales tax = $%.2f. What's your name?", totalPrice, tax,
+                (totalPrice + tax));
 
         String name = sc.nextLine();
-        //Ask benoit how to initialize the customer IDs
-        int customerId = 1001;
+
+        // will create new id for the user
+        customerId = om.getNewId();
         om.customer = new Customer(customerId, name);
         int totalTime = om.countPrepTime();
+        int numberItems = om.getNumberItems();
+
+        //saving the orders to orderManagement class
+        om.save(name, numberItems, totalPrice);
         System.out.println(om.customer.name + ", your order will be ready in " + totalTime + " minutes.");
 
     }
@@ -104,6 +110,7 @@ public class Main {
 
         while (true) {
             System.out.println("Type 1 to look at the beverage menu, or 2 to look at the food menu:");
+            // do we need to catch string error as well?
             typeInput = sc.nextInt();
             if (typeInput == 1 || typeInput == 2) break;
             System.out.println("Wrong number, please try again :) ");

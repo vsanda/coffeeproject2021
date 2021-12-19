@@ -6,12 +6,26 @@ public class OrderManagement {
     public Customer customer;
     public ArrayList<Recipe> items;
 
-    public OrderManagement(){
+    public OrderManagement() {
         this.items = new ArrayList<Recipe>();
     }
 
-    public void addItem(Recipe r){
-        if (r != null){
+    // for testing or validation purposes, will delete after launch
+    public static void main(String[] args) {
+        Connect connect = new Connect();
+         connect.connect();
+//         connect.deleteById(1005);
+         connect.selectAll();
+//         connect.getItemsGreaterThan(1);
+//         connect.getLastCustomerID();
+
+        OrderManagement om = new OrderManagement();
+//        om.save("George", 2, 15.50);
+//        om.save("Rufus", 3, 17.25);
+    }
+
+    public void addItem(Recipe r) {
+        if (r != null) {
             this.items.add(r);
         }
     }
@@ -23,8 +37,30 @@ public class OrderManagement {
      * -- Orders: Id (auto-increment), customer_name, number_items, total_price
      * - Execute the query
      */
-    public void save() {
+    public void save(String name, int numberItems, double totalPrice) {
+        //  is try and catch necessary here?
+        Connect con = new Connect();
+        con.connect();
+        // is this method best practice to automate the customer id?
+        int id = getNewId();
+        con.createNewTable();
+        con.insert(id, name, numberItems, totalPrice);
+        // for testing
+        System.out.printf("%d %s %d %.2f %n", id, name, numberItems, totalPrice);
 
+        /* old code
+        if (id == 0) {
+            con.createNewTable();
+            id = 1001;
+            con.insert(id, name, numberItems, totalPrice);
+            // for testing below
+            System.out.printf("%d %s %d %.2f %n", id, name, numberItems, totalPrice);
+            id++;
+        } else {
+            con.insert(id, name, numberItems, totalPrice);
+            id++;
+        }
+        */
     }
 
     /**
@@ -34,17 +70,18 @@ public class OrderManagement {
      * - Execute the query
      * - List the results
      */
-    public void showOrders(){
-
+    public void showOrders() {
+        Connect con = new Connect();
+        con.selectAll();
     }
 
-    public void printList(){
+    public void printList() {
         for (Recipe item : items) {
             System.out.println(item.name + ", " + item.price + ".");
         }
     }
 
-    public double countTotal(){
+    public double countTotal() {
         double total = 0.0;
         for (Recipe item : this.items) {
             total += item.price;
@@ -52,18 +89,27 @@ public class OrderManagement {
         return total;
     }
 
-    public double countTax(){
+    public double countTax() {
         double total = countTotal();
         double tax = 0.073;
         return total * tax;
     }
 
-    public int countPrepTime(){
+    public int countPrepTime() {
         int totalTime = 0;
-        for (Recipe item: this.items){
+        for (Recipe item : this.items) {
             totalTime += item.preptime;
         }
         return totalTime;
+    }
+
+    public int getNumberItems(){
+        return items.size();
+    }
+
+    public int getNewId(){
+        Connect connect = new Connect();
+        return connect.getLastCustomerID() + 1;
     }
 
 }
