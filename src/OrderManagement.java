@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -5,23 +6,17 @@ public class OrderManagement {
 
     public Customer customer;
     public ArrayList<Recipe> items;
+    private final Connect con;
 
-    public OrderManagement() {
+    public OrderManagement(Connect con) {
         this.items = new ArrayList<Recipe>();
+        this.con = con;
     }
 
     // for testing or validation purposes, will delete after launch
     public static void main(String[] args) {
-        Connect connect = new Connect();
-         connect.connect();
-//         connect.deleteById(1005);
-         connect.selectAll();
-//         connect.getItemsGreaterThan(1);
-//         connect.getLastCustomerID();
 
-        OrderManagement om = new OrderManagement();
-//        om.save("George", 2, 15.50);
-//        om.save("Rufus", 3, 17.25);
+
     }
 
     public void addItem(Recipe r) {
@@ -37,30 +32,12 @@ public class OrderManagement {
      * -- Orders: Id (auto-increment), customer_name, number_items, total_price
      * - Execute the query
      */
-    public void save(String name, int numberItems, double totalPrice) {
-        //  is try and catch necessary here?
-        Connect con = new Connect();
-        con.connect();
-        // is this method best practice to automate the customer id?
+    public void save(String name, int numberItems, double totalPrice) throws SQLException {
         int id = getNewId();
-        con.createNewTable();
         con.insert(id, name, numberItems, totalPrice);
         // for testing
         System.out.printf("%d %s %d %.2f %n", id, name, numberItems, totalPrice);
 
-        /* old code
-        if (id == 0) {
-            con.createNewTable();
-            id = 1001;
-            con.insert(id, name, numberItems, totalPrice);
-            // for testing below
-            System.out.printf("%d %s %d %.2f %n", id, name, numberItems, totalPrice);
-            id++;
-        } else {
-            con.insert(id, name, numberItems, totalPrice);
-            id++;
-        }
-        */
     }
 
     /**
@@ -71,8 +48,7 @@ public class OrderManagement {
      * - List the results
      */
     public void showOrders() {
-        Connect con = new Connect();
-        con.selectAll();
+         con.selectAll();
     }
 
     public void printList() {
@@ -107,9 +83,8 @@ public class OrderManagement {
         return items.size();
     }
 
-    public int getNewId(){
-        Connect connect = new Connect();
-        return connect.getLastCustomerID() + 1;
+    public int getNewId()  {
+        return con.getLastCustomerID() + 1;
     }
 
 }

@@ -1,30 +1,24 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Tester {
 
     public static void main(String[] args){
-        ArrayList<String> beverages = new ArrayList<String>();
-        beverages.add("1. Cappuccino");
-        beverages.add("2. Americano");
-        beverages.add("3. Pumpkin Latte");
 
-        String result = beverages.get(0);
-        System.out.println(result.substring(3));
+        // Get current time in Java
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        System.out.println(dtf.format(localDate));
 
-        Recipe hamCheeseCroissant = new Recipe("Ham and Cheese Croissant");
-        hamCheeseCroissant.setPrice(5.95);
-        hamCheeseCroissant.setPrepTime(5);
-        Recipe baconSandwich = new Recipe("Bacon, Cheddar and Egg Sandwich");
-        baconSandwich.setPrice(5.95);
-        baconSandwich.setPrepTime(5);
-        Recipe tomatoWrap = new Recipe("Tomato Feta Basil Wrap (v)");
-        tomatoWrap.setPrice(4.95);
-        tomatoWrap.setPrepTime(3);
+        DateTimeFormatter dtfTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime nowTime = LocalTime.now();
+        System.out.println(dtfTime.format(nowTime));
 
-        ArrayList<Recipe> foodRecipes = new ArrayList<Recipe>();
-        foodRecipes.add(hamCheeseCroissant);
-        foodRecipes.add(baconSandwich);
-        foodRecipes.add(tomatoWrap);
+        LocalTime startHours = LocalTime.parse("08:00:00", DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime closingHours = LocalTime.parse("19:00:00", DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.println(startHours.isBefore(nowTime));
 
     }
 }
