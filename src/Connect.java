@@ -1,57 +1,74 @@
 import java.sql.*;
 
-/**
- * @author sqlitetutorial.net
- */
 public class Connect {
 
-    private static Connection connection;
-    private final Statement stmt;
+    private final String url;
 
-    // TODO: This function should actually be the constructor: It will create the database when the class is instantiated if it does not exist already.
-    // TODO: Also replace the connection and execution of the query with the executeQuery() function
     public Connect(String url) throws SQLException {
-        //later down the road, inventory_order_sql: date, inventory_id, quantity, cost_per_item, total_cost
-        connection = DriverManager.getConnection(url);
-        System.out.println("Connection to SQLite has been established.");
-        stmt = connection.createStatement();
-        //executeQuery() function does not work here because it does not return ResultSet
+        this.url = url;
+
+        // Create the tables if needed
+        createTables();
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    // Notes: the functions below are for testing purposes only in this class, will delete after prod
-    public static void main(String[] args) throws SQLException {
-
-    }
-
 
     /**
      * This function execute a query on the database.
-     * SQLException will be thrown if something went wrong
-     * TODO: Write this function and use it in any of the new functions
+     * SQLException will be thrown if something went wrongs
      *
-     * @param sql The SQL statement to execute
+     * @param stmt The SQL statement to execute
      * @return ResultSet if any results, else null
      */
-    public ResultSet executeQuery(String sql) throws SQLException {
-        // Check if the connection is open. If not -> Open it
-        // Execute the statement
-        // Catch and display errors if any. Also let the exception bubble
-        // (Optional) Create and return the ResultSet containing the results
-        if (sql == null) {
-            throw new SQLException("The SQL statement can't be null");
-        }
+    public ResultSet executeQuery(String stmt, Object... args) {
+        // Create the connection
+        Connection connection = null;
+
+        // Retrieve the type of query
+        boolean dml = (stmt.startsWith("INSERT") || stmt.startsWith("UPDATE") || stmt.startsWith("DELETE") || stmt.startsWith("CREATE"));
+
         try {
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            //      System.out.println("Query was successfully executed.");
-            return rs;
+            connection = DriverManager.getConnection(this.url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error while connecting to the DB:" + e.getMessage());
+            return null;
         }
-        return null;
+
+        // Execute the statement
+       if (args.length == 0) {
+           // We have a normal statement
+           try {
+               Statement statement = connection.createStatement();
+               if (!dml) {
+                   return statement.executeQuery(stmt);
+               } else {
+                   statement.execute(stmt);
+                   return null;
+               }
+           } catch ( SQLException e) {
+               System.out.println("Error while executing the query \""+stmt+"\"\n"+e.getMessage());
+           }
+       }
+
+       try {
+           PreparedStatement statement = connection.prepareStatement(stmt);
+           for (int i = 0; i < args.length; i++) {
+               Object arg = args[i];
+               if (arg instanceof Integer) {
+                   statement.setInt(i+1, Integer.parseInt(arg.toString()));
+               } else if (arg instanceof Float) {
+                   statement.setFloat(i+1, Float.parseFloat(arg.toString()));
+               } else {
+                   statement.setString(i+1, arg.toString());
+               }
+           }
+           if (dml){
+               statement.executeUpdate();
+           } else {
+               return statement.executeQuery();
+           }
+       } catch (SQLException e) {
+           System.out.println("Error while executing the query \""+stmt+"\"\n"+e.getMessage());
+       }
+       return null;
     }
 
     public void createTables() throws SQLException {
@@ -67,14 +84,13 @@ public class Connect {
                 + "	inventory_name text NOT NULL,\n"
                 + "	quantity integer\n"
                 + ");";
-        stmt.execute(order_management_sql);
-        stmt.execute(inventory_sql);
+        executeQuery(order_management_sql);
+        executeQuery(inventory_sql);
     }
 
     /**
      * select all rows in the order_management data
      */
-    // TODO: replace the connection and execution of the query with the executeQuery() function
     public void selectAll() {
         System.out.println("This query will select all rows from the table");
         String sql = "SELECT id, customer_name, number_items, total_price FROM order_management";
@@ -109,7 +125,6 @@ public class Connect {
     }
 
     // Created this function with the intend to automate customerID
-    // TODO: replace the connection and execution of the query with the executeQuery() function
     public int getLastCustomerID() {
         String sql = "SELECT max(id) as id FROM order_management";
         int maxId = 0;
@@ -124,42 +139,25 @@ public class Connect {
         return maxId;
     }
 
-    // TODO: replace the connection and execution of the query with the executeQuery() function
     // Notes: need to prepare a diff function for PreparedStatement;
     public void insert(int id, String customerName, int numberItems, double totalPrice) throws SQLException {
         String sql = "INSERT INTO order_management(id, customer_name, number_items, total_price) VALUES(?,?,?,?)";
-        PreparedStatement pstmt = connection.prepareStatement(sql);
-        pstmt.setInt(1, id);
-        pstmt.setString(2, customerName);
-        pstmt.setInt(3, numberItems);
-        pstmt.setDouble(4, totalPrice);
-        pstmt.executeUpdate();
+        executeQuery(sql, id, customerName, numberItems, totalPrice);
 
     }
 
     public void insertInventory(String inventory_name, int quantity) {
         String sql = "INSERT INTO inventory(inventory_name, quantity) VALUES(?,?)";
-        try (
-            PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, inventory_name);
-            pstmt.setInt(2, quantity);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        executeQuery(sql, inventory_name, quantity);
     }
 
     // Building this function to get more specific queries
-    // TODO: replace the connection and execution of the query with the executeQuery() function
     // Notes: need to prepare a diff function for PreparedStatement;
     public void getItemsGreaterThan(int limit) {
         System.out.println("This query will select all rows for all items greater than " + limit + " from the table");
         String sql = "SELECT id, customer_name, number_items, total_price FROM order_management WHERE number_items > ?";
-
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, limit);
-            ResultSet rs = pstmt.executeQuery();
-
+        try {
+            ResultSet rs = executeQuery(sql, limit);
             // looping through the result set
             while (rs.next()) {
                 System.out.println(rs.getInt("id") + "\t" +
@@ -168,21 +166,15 @@ public class Connect {
                         rs.getDouble("total_price"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error when retrieving items: "+e.getMessage());
         }
     }
 
     // Delete any entries specified by the id
-    // TODO: replace the connection and execution of the query with the executeQuery() function
     // Notes: need to prepare a diff function for PreparedStatement;
     public void deleteById(int id) {
         String sql = "DELETE FROM order_management WHERE id = ?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
-            pstmt.executeUpdate();
-            System.out.println("Row with id " + id + " was successfully deleted.");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        executeQuery(sql, id);
+        System.out.println("Row with id " + id + " was successfully deleted.");
     }
 }
