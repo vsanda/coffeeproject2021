@@ -1,19 +1,11 @@
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-public class Menu {
+public class Menu extends ConnectedClass{
 
     public static ArrayList<Recipe> bevRecipes;
     public static ArrayList<Recipe> foodRecipes;
 
     public Menu() {
-
-    }
-
-    public static void main(String[] args) throws SQLException {
-        Connect con = new Connect("jdbc:sqlite:C:/sqlite/db/chinook.db");
-
         //adding new ingredients here
         Ingredient sugar = new Ingredient("sugar");
         Ingredient coffeeBeans = new Ingredient("coffee beans");
@@ -34,7 +26,7 @@ public class Menu {
 
 
         //Instantiate inventory
-        Inventory inv = new Inventory(con);
+        Inventory inv = new Inventory();
         inv.addInventory(sugar.name, 100);
         inv.addInventory(coffeeBeans.name, 200);
         inv.addInventory(milk.name, 100);
@@ -112,7 +104,5 @@ public class Menu {
         foodRecipes.add(hamCheeseCroissant);
         foodRecipes.add(baconSandwich);
         foodRecipes.add(tomatoWrap);
-
-
     }
 }

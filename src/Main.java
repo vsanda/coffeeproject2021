@@ -19,17 +19,15 @@ public class Main {
     // start from scratch, read the same databases
 
     public static void main(String[] args) throws SQLException {
-        // need to change this to your local drive or it will throw an error
-        Connect con = new Connect("jdbc:sqlite:C:/sqlite/db/chinook.db");
-
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         startHours = LocalTime.parse("08:00:00", dtf);
-        closingHours = LocalTime.parse("19:00:00", dtf);
+        closingHours = LocalTime.parse("22:00:00", dtf);
         LocalTime nowTime = LocalTime.now();
 
         Menu menu = new Menu();
         bevRecipes = Menu.bevRecipes;
         foodRecipes = Menu.foodRecipes;
+
 
         //can get timestamp next time and throw exception if store is closed.
         if (nowTime.isBefore(startHours)) {
@@ -43,7 +41,7 @@ public class Main {
 
         System.out.println("Hello, welcome to the store, what can I get for you today?");
         Scanner sc = new Scanner(System.in);
-        OrderManagement om = new OrderManagement(con);
+        OrderManagement om = new OrderManagement();
 
 
         do {

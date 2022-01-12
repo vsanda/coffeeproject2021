@@ -2,15 +2,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class OrderManagement {
+public class OrderManagement extends ConnectedClass {
 
     public Customer customer;
     public ArrayList<Recipe> items;
-    private final Connect con;
 
-    public OrderManagement(Connect con) {
+    public OrderManagement() {
         this.items = new ArrayList<Recipe>();
-        this.con = con;
     }
 
     // for testing or validation purposes, will delete after launch
@@ -34,7 +32,7 @@ public class OrderManagement {
      */
     public void save(String name, int numberItems, double totalPrice) throws SQLException {
         int id = getNewId();
-        con.insert(id, name, numberItems, totalPrice);
+        connection.insert(id, name, numberItems, totalPrice);
         // for testing
         System.out.printf("%d %s %d %.2f %n", id, name, numberItems, totalPrice);
 
@@ -48,7 +46,7 @@ public class OrderManagement {
      * - List the results
      */
     public void showOrders() {
-         con.selectAll();
+         connection.selectAll();
     }
 
     public void printList() {
@@ -84,7 +82,7 @@ public class OrderManagement {
     }
 
     public int getNewId()  {
-        return con.getLastCustomerID() + 1;
+        return connection.getLastCustomerID() + 1;
     }
 
 }
