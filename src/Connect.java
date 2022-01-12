@@ -33,42 +33,42 @@ public class Connect {
         }
 
         // Execute the statement
-       if (args.length == 0) {
-           // We have a normal statement
-           try {
-               Statement statement = connection.createStatement();
-               if (!dml) {
-                   return statement.executeQuery(stmt);
-               } else {
-                   statement.execute(stmt);
-                   return null;
-               }
-           } catch ( SQLException e) {
-               System.out.println("Error while executing the query \""+stmt+"\"\n"+e.getMessage());
-           }
-       }
+        if (args.length == 0) {
+            // We have a normal statement
+            try {
+                Statement statement = connection.createStatement();
+                if (!dml) {
+                    return statement.executeQuery(stmt);
+                } else {
+                    statement.execute(stmt);
+                    return null;
+                }
+            } catch (SQLException e) {
+                System.out.println("Error while executing the query \"" + stmt + "\"\n" + e.getMessage());
+            }
+        }
 
-       try {
-           PreparedStatement statement = connection.prepareStatement(stmt);
-           for (int i = 0; i < args.length; i++) {
-               Object arg = args[i];
-               if (arg instanceof Integer) {
-                   statement.setInt(i+1, Integer.parseInt(arg.toString()));
-               } else if (arg instanceof Float) {
-                   statement.setFloat(i+1, Float.parseFloat(arg.toString()));
-               } else {
-                   statement.setString(i+1, arg.toString());
-               }
-           }
-           if (dml){
-               statement.executeUpdate();
-           } else {
-               return statement.executeQuery();
-           }
-       } catch (SQLException e) {
-           System.out.println("Error while executing the query \""+stmt+"\"\n"+e.getMessage());
-       }
-       return null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(stmt);
+            for (int i = 0; i < args.length; i++) {
+                Object arg = args[i];
+                if (arg instanceof Integer) {
+                    statement.setInt(i + 1, Integer.parseInt(arg.toString()));
+                } else if (arg instanceof Float) {
+                    statement.setFloat(i + 1, Float.parseFloat(arg.toString()));
+                } else {
+                    statement.setString(i + 1, arg.toString());
+                }
+            }
+            if (dml) {
+                statement.executeUpdate();
+            } else {
+                return statement.executeQuery();
+            }
+        } catch (SQLException e) {
+            System.out.println("Error while executing the query \"" + stmt + "\"\n" + e.getMessage());
+        }
+        return null;
     }
 
     public void createTables() throws SQLException {
@@ -166,7 +166,7 @@ public class Connect {
                         rs.getDouble("total_price"));
             }
         } catch (SQLException e) {
-            System.out.println("Error when retrieving items: "+e.getMessage());
+            System.out.println("Error when retrieving items: " + e.getMessage());
         }
     }
 
