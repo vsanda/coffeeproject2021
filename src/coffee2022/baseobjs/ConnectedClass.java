@@ -1,3 +1,5 @@
+package coffee2022.baseobjs;
+
 import java.sql.SQLException;
 
 public class ConnectedClass {

@@ -1,3 +1,9 @@
+import coffee2022.enums.RecipeTypes;
+import coffee2022.objs.Customer;
+import coffee2022.objs.Menu;
+import coffee2022.objs.OrderManagement;
+import coffee2022.objs.Recipe;
+
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -11,9 +17,12 @@ public class Main {
     public static LocalTime startHours;
     public static LocalTime closingHours;
 
-    // Menu containing all the recipes
+    // coffee2022.objs.Menu containing all the recipes
     public static Menu menu = new Menu();
     public static int customerId;
+
+    // Scanner shared across
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) throws SQLException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -38,11 +47,7 @@ public class Main {
         do {
             om.addItem(showMenu());
             System.out.println("Anything else that you want to order? (Y/N):");
-
-            if (!sc.nextLine().equals("Y")) {
-                break;
-            }
-        } while (true);
+        } while (sc.nextLine().equals("Y"));
 
         System.out.println("Your total order: ");
         om.printList();
@@ -62,11 +67,9 @@ public class Main {
         //saving the orders to orderManagement class
         om.save(name, numberItems, totalPrice);
         System.out.println(om.customer.name + ", your order will be ready in " + totalTime + " minutes.");
-
     }
 
-    public static int showMenuCategory() {
-        Scanner sc = new Scanner(System.in);
+    public static RecipeTypes showMenuCategory() {
         while (true) {
             int typeInput = 0;
             System.out.println("Type 1 to look at the beverage menu, or 2 to look at the food menu:");
@@ -78,26 +81,18 @@ public class Main {
                 continue;
             }
             if (typeInput == 1 || typeInput == 2) {
-                return typeInput;
+                return typeInput == 1 ? RecipeTypes.FOOD:RecipeTypes.BEVERAGE;
             } else {
                 System.out.println("Wrong number, please try again :)");
             }
-
         }
-
     }
 
     public static Recipe showMenu() {
-        // Either get 1 for food or 2 for food
-        int category = showMenuCategory();
+        RecipeTypes recipeType = showMenuCategory();
 
-        // Store the list of choices depending the category selected by the user
-        ArrayList<Recipe> currentChoices;
-        if (category == 1) {
-            currentChoices = menu.bevRecipes;
-        } else {
-            currentChoices = menu.foodRecipes;
-        }
+        // Store the list of choices depending on the category selected by the user
+        ArrayList<Recipe> currentChoices = menu.getMenuForType(recipeType);
 
         Recipe selectedRecipe = null;
         while (selectedRecipe == null) {
@@ -107,8 +102,6 @@ public class Main {
             }
 
             // Prompt the user for a choice
-            Scanner sc = new Scanner(System.in);
-
             System.out.println("Enter the number to place your order: ");
             int input = 0; // Initializing this before the try-catch block
             try {

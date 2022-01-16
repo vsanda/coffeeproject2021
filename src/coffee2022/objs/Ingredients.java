@@ -1,3 +1,5 @@
+package coffee2022.objs;
+
 /**
  * This class stores all the available ingredients
  */

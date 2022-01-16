@@ -1,3 +1,7 @@
+package coffee2022.objs;
+
+import coffee2022.enums.RecipeTypes;
+
 import java.util.HashMap;
 
 public class Recipe {
@@ -5,18 +9,15 @@ public class Recipe {
     public Recipe recipe;
     public HashMap<Ingredient, Integer> ingredients;
     public String name;
-    public Enum Type;
+    public RecipeTypes type;
     public double price;
     public int preptime;
 
-    public Recipe(String name) {
+    public Recipe(String name, RecipeTypes type) {
         this.name = name;
         this.ingredients = new HashMap<Ingredient, Integer>();
         this.price = 0.0;
-    }
-
-    public Recipe getRecipe(String name){
-        return this.recipe;
+        this.type = type;
     }
 
     public void setPrice(double price) {

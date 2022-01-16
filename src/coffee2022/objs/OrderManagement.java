@@ -1,3 +1,9 @@
+package coffee2022.objs;
+
+import coffee2022.baseobjs.ConnectedClass;
+import coffee2022.objs.Customer;
+import coffee2022.objs.Recipe;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -25,7 +31,7 @@ public class OrderManagement extends ConnectedClass {
 
     /**
      * Save the order to the database
-     * - Connect to the SQLite database
+     * - coffee2022.baseobjs.Connect to the SQLite database
      * - Create the query
      * -- Orders: Id (auto-increment), customer_name, number_items, total_price
      * - Execute the query
@@ -40,7 +46,7 @@ public class OrderManagement extends ConnectedClass {
 
     /**
      * List the orders from the database
-     * - Connect to the SQLite database
+     * - coffee2022.baseobjs.Connect to the SQLite database
      * - Create the query
      * - Execute the query
      * - List the results

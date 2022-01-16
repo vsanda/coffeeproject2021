@@ -1,3 +1,7 @@
+package coffee2022.objs;
+
+import coffee2022.baseobjs.ConnectedClass;
+
 import java.util.HashMap;
 
 public class Inventory extends ConnectedClass {
