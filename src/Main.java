@@ -7,27 +7,19 @@ import java.util.Scanner;
 
 public class Main {
 
+    // Store the opening and closing hours
     public static LocalTime startHours;
     public static LocalTime closingHours;
-    public static ArrayList<Recipe> bevRecipes;
-    public static ArrayList<Recipe> foodRecipes;
-    public static int customerId;
 
-    // Order Taking
-    // Database setup
-    // Menu changing
-    // start from scratch, read the same databases
+    // Menu containing all the recipes
+    public static Menu menu = new Menu();
+    public static int customerId;
 
     public static void main(String[] args) throws SQLException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         startHours = LocalTime.parse("08:00:00", dtf);
         closingHours = LocalTime.parse("22:00:00", dtf);
         LocalTime nowTime = LocalTime.now();
-
-        Menu menu = new Menu();
-        bevRecipes = Menu.bevRecipes;
-        foodRecipes = Menu.foodRecipes;
-
 
         //can get timestamp next time and throw exception if store is closed.
         if (nowTime.isBefore(startHours)) {
@@ -42,7 +34,6 @@ public class Main {
         System.out.println("Hello, welcome to the store, what can I get for you today?");
         Scanner sc = new Scanner(System.in);
         OrderManagement om = new OrderManagement();
-
 
         do {
             om.addItem(showMenu());
@@ -103,9 +94,9 @@ public class Main {
         // Store the list of choices depending the category selected by the user
         ArrayList<Recipe> currentChoices;
         if (category == 1) {
-            currentChoices = bevRecipes;
+            currentChoices = menu.bevRecipes;
         } else {
-            currentChoices = foodRecipes;
+            currentChoices = menu.foodRecipes;
         }
 
         Recipe selectedRecipe = null;
