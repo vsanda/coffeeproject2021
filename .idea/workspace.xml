@@ -101,6 +101,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
@@ -118,9 +123,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Connect" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="net.sqlitetutorial.Connect" />
-      <module name="CoffeeProject2021" />
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="version2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,16 +140,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderManagement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="OrderManagement" />
-      <module name="CoffeeProject2021" />
+    <configuration name="Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Menu" />
+      <module name="version2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Tester (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Tester" />
-      <module name="CoffeeProject2021" />
+      <module name="version2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,10 +164,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.OrderManagement" />
-        <item itemvalue="Application.Tester" />
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Tester (1)" />
+        <item itemvalue="Application.Menu" />
         <item itemvalue="Application.Connect (1)" />
-        <item itemvalue="Application.Connect" />
       </list>
     </recent_temporary>
   </component>

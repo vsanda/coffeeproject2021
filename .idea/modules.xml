@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CoffeeProject2021.iml" filepath="$PROJECT_DIR$/CoffeeProject2021.iml" />
+      <module fileurl="file://$PROJECT_DIR$/version2/version2.iml" filepath="$PROJECT_DIR$/version2/version2.iml" />
     </modules>
   </component>
 </project>

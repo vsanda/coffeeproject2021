@@ -1,7 +1,7 @@
 import coffee2022.enums.RecipeTypes;
 import coffee2022.objs.Customer;
-import coffee2022.objs.Menu;
-import coffee2022.objs.OrderManagement;
+import coffee2022.menu.Menu;
+import coffee2022.monitoring.OrderManagement;
 import coffee2022.objs.Recipe;
 
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ public class Main {
     public static LocalTime startHours;
     public static LocalTime closingHours;
 
-    // coffee2022.objs.Menu containing all the recipes
+    // coffee2022.menu.Menu containing all the recipes
     public static Menu menu = new Menu();
     public static int customerId;
 
@@ -41,7 +41,6 @@ public class Main {
         }
 
         System.out.println("Hello, welcome to the store, what can I get for you today?");
-        Scanner sc = new Scanner(System.in);
         OrderManagement om = new OrderManagement();
 
         do {
