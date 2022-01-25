@@ -7,6 +7,7 @@ import coffee2022.objs.Recipe;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -30,10 +31,17 @@ public class Main {
         closingHours = LocalTime.parse("22:00:00", dtf);
         LocalTime nowTime = LocalTime.now();
 
-        //can get timestamp next time and throw exception if store is closed.
+        // Note: is exit the right way to go about it or..?
         if (nowTime.isBefore(startHours)) {
-            //Need to work out the calculation next time
-            System.out.println("We will be open in [x] minutes. Pls come back again at " + startHours);
+            long diff = nowTime.until(startHours, ChronoUnit.MINUTES);
+            if (diff < 60) {
+                System.out.println("We will be open in [x] minutes. Pls come back again at " + startHours);
+            } else {
+                int hour = (int) (diff / 60);
+                int minute = (int) diff - (hour * 60);
+                System.out.printf("We will be open in %d hour(s) and %d minutes. Pls come back again at %s.", hour,
+                        minute, startHours);
+            }
             System.exit(0);
         } else if (nowTime.isAfter(closingHours)) {
             System.out.println("We are currently closed. Pls come back again tomorrow at " + startHours);
@@ -45,8 +53,8 @@ public class Main {
 
         do {
             om.addItem(showMenu());
-            System.out.println("Anything else that you want to order? (Y/N):");
-        } while (sc.nextLine().equals("Y"));
+            System.out.print("Anything else that you want to order? (Y/N):");
+        } while (!sc.next().equals("N"));
 
         System.out.println("Your total order: ");
         om.printList();
@@ -69,9 +77,22 @@ public class Main {
     }
 
     public static RecipeTypes showMenuCategory() {
+
         while (true) {
+            // Display the various menu categories
+            System.out.println("Menu");
+            System.out.println("--------------------------");
+            int index = 1;
+            for (RecipeTypes t : RecipeTypes.values()) {
+                System.out.println(index + " : "+t.label);
+                index++;
+            }
+
+            // Prompts the user to choose a category
+            System.out.print("Choose a category: ");
+
+            // Validate that the user actually input a number
             int typeInput = 0;
-            System.out.println("Type 1 to look at the beverage menu, or 2 to look at the food menu:");
             try {
                 typeInput = sc.nextInt();
             } catch (InputMismatchException e) {
@@ -79,16 +100,24 @@ public class Main {
                 sc.next();
                 continue;
             }
-            if (typeInput == 1 || typeInput == 2) {
-                return typeInput == 1 ? RecipeTypes.FOOD:RecipeTypes.BEVERAGE;
-            } else {
+
+            // Validate that the user input a correct number (1 to RecipeTypes.values().length)
+            if (typeInput < 1 || typeInput > RecipeTypes.values().length) {
                 System.out.println("Wrong number, please try again :)");
+                continue;
             }
+
+            // We have a valid category, returns it
+            // We need to -1 the typeInput because the user category list starts at 1 while the array actually starts at 0
+            return RecipeTypes.values()[typeInput-1];
         }
     }
 
     public static Recipe showMenu() {
         RecipeTypes recipeType = showMenuCategory();
+        // Display a header
+        System.out.println("\n\n"+recipeType.label);
+        System.out.println("-------------------");
 
         // Store the list of choices depending on the category selected by the user
         ArrayList<Recipe> currentChoices = menu.getMenuForType(recipeType);
@@ -101,7 +130,7 @@ public class Main {
             }
 
             // Prompt the user for a choice
-            System.out.println("Enter the number to place your order: ");
+            System.out.print("Enter the number to place your order: ");
             int input = 0; // Initializing this before the try-catch block
             try {
                 input = sc.nextInt();
@@ -115,10 +144,9 @@ public class Main {
                 System.out.println("Wrong number, try again");
             } else {
                 selectedRecipe = currentChoices.get(input - 1);
-                System.out.println("You have ordered " + selectedRecipe.name);
+                System.out.println("\nYou have ordered " + selectedRecipe.name);
             }
         }
-
         return selectedRecipe;
     }
 }

@@ -6,6 +6,7 @@ import coffee2022.objs.Ingredients;
 import coffee2022.objs.Recipe;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Menu extends ConnectedClass {
 
@@ -68,11 +69,23 @@ public class Menu extends ConnectedClass {
         tomatoWrap.setPrice(4.95);
         tomatoWrap.setPrepTime(3);
         recipes.add(tomatoWrap);
+
+        // Pastries
+        Recipe brownie = new Recipe("Chocolate Brownie", RecipeTypes.PASTRIES);
+        Recipe lemonBar = new Recipe("Lemon Bar", RecipeTypes.PASTRIES);
+        Recipe redVelvet = new Recipe("Red Velvet Cupcake", RecipeTypes.PASTRIES);
+        recipes.add(brownie);
+        recipes.add(lemonBar);
+        recipes.add(redVelvet);
+
     }
 
-    // TODO: Code this function allowing to retrieve recipes depending on their types
+    /**
+     * This function will filter the recipes array (which contains all recipe regardless of type)
+     * and return a new list containing only the recipes for the given type.
+     */
     public ArrayList<Recipe> getMenuForType(RecipeTypes type) {
-        return recipes;
+        return recipes.stream().filter(r -> r.type == type).collect(Collectors.toCollection(ArrayList::new));
     }
 
 

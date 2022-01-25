@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66d9dfad-e171-4720-8396-d04a5e5aadca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="66d9dfad-e171-4720-8396-d04a5e5aadca" name="Default Changelist" comment="Clean up packages. Also changes how the menu works by only relying on a single recipe list.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CoffeeProject2021.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OrderManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OrderManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/coffee2022/enums/RecipeTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/coffee2022/enums/RecipeTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/coffee2022/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/coffee2022/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/version2/src/Ingredient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/version2/src/Inventory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/version2/src/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/version2/src/OrderManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/version2/src/Recipe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/version2/src/TestData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/version2/src/Tester.java" beforeDir="false" />
+    </list>
+    <list id="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" name="Ignore" comment="Ignore">
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CoffeeProject2021/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CoffeeProject2021/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,13 +27,43 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="5" changelist="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" />
+        <range start1="3" end1="6" start2="6" end2="7" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="7" end1="8" start2="8" end2="8" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="9" end1="10" start2="9" end2="23" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="19" end1="20" start2="32" end2="32" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="21" end1="21" start2="33" end2="34" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="27" end1="27" start2="40" end2="70" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="98" end1="98" start2="141" end2="144" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="101" end1="107" start2="147" end2="148" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="109" end1="114" start2="150" end2="153" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="118" end1="120" start2="157" end2="159" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="125" end1="132" start2="164" end2="164" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="142" end1="145" start2="174" end2="177" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="149" end1="150" start2="181" end2="182" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="151" end1="152" start2="183" end2="184" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="159" end1="159" start2="191" end2="200" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="166" end1="170" start2="207" end2="210" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="176" end1="176" start2="216" end2="217" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="181" end1="181" start2="222" end2="261" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="182" end1="182" start2="262" end2="263" changelist="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" />
+        <range start1="197" end1="198" start2="278" end2="286" changelist="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" />
+      </ranges>
+    </file>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="20w0EJEeU7Ym3cC1apXHLbl4v6s" />
   <component name="ProjectView">
@@ -96,36 +136,25 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/sqlite-jdbc-3.36.0.3.jar" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Connect (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Connect" />
+    <configuration name="Connect" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="net.sqlitetutorial.Connect" />
       <module name="CoffeeProject2021" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="version2" />
+    <configuration name="Connect" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="coffee2022.baseobjs.Connect" />
+      <module name="CoffeeProject2021" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,16 +169,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Menu" />
-      <module name="version2" />
+    <configuration name="OrderManagement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="coffee2022.objs.OrderManagement" />
+      <module name="CoffeeProject2021" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tester (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Tester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Tester" />
-      <module name="version2" />
+      <module name="CoffeeProject2021" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,24 +190,72 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Tester (1)" />
-        <item itemvalue="Application.Menu" />
-        <item itemvalue="Application.Connect (1)" />
+        <item itemvalue="Application.OrderManagement" />
+        <item itemvalue="Application.Tester" />
+        <item itemvalue="Application.Connect" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" name="Ignore" comment="" />
       <created>1639093608780</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1639093608780</updated>
       <workItem from="1639093610904" duration="69000" />
+      <workItem from="1640034315012" duration="896000" />
+      <workItem from="1641956973886" duration="2892000" />
+      <workItem from="1642356919701" duration="6997000" />
+      <workItem from="1643152992159" duration="1403000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added some todos + gitignore">
+      <created>1640034562837</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1640034562837</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactor the Connect class.">
+      <created>1641959525520</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1641959525520</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Cleanup file format.">
+      <created>1641959553416</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1641959553416</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Change how the inventory works.">
+      <created>1642357735201</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1642357735201</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Clean up packages. Also changes how the menu works by only relying on a single recipe list.">
+      <created>1642358491775</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1642358491775</updated>
     </task>
     <servers />
   </component>
