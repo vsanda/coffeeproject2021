@@ -15,10 +15,10 @@ import java.util.Scanner;
 public class Main {
 
     // Store the opening and closing hours
-    public static LocalTime startHours;
-    public static LocalTime closingHours;
+    public static LocalTime startHours = LocalTime.parse("08:00:00", DateTimeFormatter.ofPattern("HH:mm:ss"));
+    public static LocalTime closingHours = LocalTime.parse("22:00:00", DateTimeFormatter.ofPattern("HH:mm:ss"));
 
-    // coffee2022.menu.Menu containing all the recipes
+    // Menu containing all the recipes
     public static Menu menu = new Menu();
     public static int customerId;
 
@@ -26,14 +26,9 @@ public class Main {
     private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) throws SQLException {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        startHours = LocalTime.parse("08:00:00", dtf);
-        closingHours = LocalTime.parse("22:00:00", dtf);
-        LocalTime nowTime = LocalTime.now();
-
         // Note: is exit the right way to go about it or..?
-        if (nowTime.isBefore(startHours)) {
-            long diff = nowTime.until(startHours, ChronoUnit.MINUTES);
+        if (LocalTime.now().isBefore(startHours)) {
+            long diff =  LocalTime.now().until(startHours, ChronoUnit.MINUTES);
             if (diff < 60) {
                 System.out.println("We will be open in [x] minutes. Pls come back again at " + startHours);
             } else {
@@ -43,7 +38,7 @@ public class Main {
                         minute, startHours);
             }
             System.exit(0);
-        } else if (nowTime.isAfter(closingHours)) {
+        } else if (LocalTime.now().isAfter(closingHours)) {
             System.out.println("We are currently closed. Pls come back again tomorrow at " + startHours);
             System.exit(0);
         }
@@ -60,20 +55,18 @@ public class Main {
         om.printList();
         double totalPrice = om.countTotal();
         double tax = om.countTax();
-        System.out.printf("\nYour total will be $%.2f + $%.2f sales tax = $%.2f. What's your name?", totalPrice, tax,
-                (totalPrice + tax));
+        System.out.printf("\nYour total will be $%.2f + $%.2f sales tax = $%.2f. What's your name?",  om.countTotal(), om.countTax(),
+                om.countGrandTotal());
 
         String name = sc.nextLine();
 
         // will create new id for the user
         customerId = om.getNewId();
         om.customer = new Customer(customerId, name);
-        int totalTime = om.countPrepTime();
-        int numberItems = om.getNumberItems();
 
         //saving the orders to orderManagement class
-        om.save(name, numberItems, totalPrice);
-        System.out.println(om.customer.name + ", your order will be ready in " + totalTime + " minutes.");
+        om.save();
+        System.out.println(om.customer.name + ", your order will be ready in " + om.countPrepTime() + " minutes.");
     }
 
     public static RecipeTypes showMenuCategory() {

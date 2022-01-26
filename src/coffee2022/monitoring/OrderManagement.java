@@ -25,22 +25,17 @@ public class OrderManagement extends ConnectedClass {
 
     /**
      * Save the order to the database
-     * - coffee2022.dbMgmt.Connect to the SQLite database
-     * - Create the query
-     * -- Orders: Id (auto-increment), customer_name, number_items, total_price
-     * - Execute the query
      */
-    public void save(String name, int numberItems, double totalPrice) throws SQLException {
+    public void save() throws SQLException {
         int id = getNewId();
-        connection.insert(id, name, numberItems, totalPrice);
+        connection.insert(id, customer.name, items.size(), countGrandTotal());
         // for testing
-        System.out.printf("%d %s %d %.2f %n", id, name, numberItems, totalPrice);
+        System.out.printf("%d %s %d %.2f %n", id, customer.name, items.size(), countGrandTotal());
 
     }
 
     /**
      * List the orders from the database
-     * - coffee2022.dbMgmt.Connect to the SQLite database
      * - Create the query
      * - Execute the query
      * - List the results
@@ -53,6 +48,10 @@ public class OrderManagement extends ConnectedClass {
         for (Recipe item : items) {
             System.out.println(item.name + ", " + item.price + ".");
         }
+    }
+
+    public double countGrandTotal(){
+        return countTotal() + countTax();
     }
 
     public double countTotal() {
