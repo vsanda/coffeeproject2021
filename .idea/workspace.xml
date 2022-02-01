@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66d9dfad-e171-4720-8396-d04a5e5aadca" name="Default Changelist" comment="Clean up packages. Also changes how the menu works by only relying on a single recipe list.">
+    <list default="true" id="66d9dfad-e171-4720-8396-d04a5e5aadca" name="Default Changelist" comment="Some cleanup to the Main">
+      <change afterPath="$PROJECT_DIR$/src/coffee2022/tests/ConnectTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coffee2022/tests/MenuTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoffeeProject2021.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CoffeeProject2021.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CoffeeProject2021/Tester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CoffeeProject2021/Tester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Connect.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/coffee2022/enums/RecipeTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/coffee2022/enums/RecipeTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/coffee2022/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/coffee2022/menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/version2/src/Ingredient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/version2/src/Inventory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/version2/src/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/version2/src/OrderManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/version2/src/Recipe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/version2/src/TestData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/version2/src/Tester.java" beforeDir="false" />
     </list>
     <list id="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" name="Ignore" comment="Ignore">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CoffeeProject2021/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CoffeeProject2021/Main.class" afterDir="false" />
@@ -27,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -39,26 +36,24 @@
     <file path="$PROJECT_DIR$/.idea/workspace.xml">
       <ranges>
         <range start1="2" end1="2" start2="2" end2="5" changelist="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" />
-        <range start1="3" end1="6" start2="6" end2="7" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="7" end1="8" start2="8" end2="8" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="9" end1="10" start2="9" end2="23" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="19" end1="20" start2="32" end2="32" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="21" end1="21" start2="33" end2="34" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="27" end1="27" start2="40" end2="70" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="98" end1="98" start2="141" end2="144" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="101" end1="107" start2="147" end2="148" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="109" end1="114" start2="150" end2="153" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="118" end1="120" start2="157" end2="159" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="125" end1="132" start2="164" end2="164" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="142" end1="145" start2="174" end2="177" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="149" end1="150" start2="181" end2="182" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="151" end1="152" start2="183" end2="184" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="159" end1="159" start2="191" end2="200" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="166" end1="170" start2="207" end2="210" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="176" end1="176" start2="216" end2="217" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="181" end1="181" start2="222" end2="261" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
-        <range start1="182" end1="182" start2="262" end2="263" changelist="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" />
-        <range start1="197" end1="198" start2="278" end2="286" changelist="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" />
+        <range start1="3" end1="4" start2="6" end2="9" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="5" end1="5" start2="10" end2="13" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="6" end1="15" start2="14" end2="14" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="17" end1="17" start2="16" end2="17" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="29" end1="30" start2="29" end2="29" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="31" end1="31" start2="30" end2="31" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="41" end1="61" start2="41" end2="59" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="133" end1="133" start2="131" end2="135" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="137" end1="138" start2="139" end2="140" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="142" end1="143" start2="144" end2="145" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="146" end1="154" start2="148" end2="154" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="178" end1="180" start2="178" end2="179" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="181" end1="181" start2="180" end2="224" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="203" end1="203" start2="246" end2="249" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="205" end1="207" start2="251" end2="251" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="222" end1="223" start2="266" end2="268" changelist="66d9dfad-e171-4720-8396-d04a5e5aadca" />
+        <range start1="259" end1="259" start2="304" end2="319" changelist="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" />
+        <range start1="274" end1="275" start2="334" end2="344" changelist="8848bf85-a7cf-48c7-9ec2-60e3bb0e07f4" />
       </ranges>
     </file>
   </component>
@@ -131,27 +126,29 @@
     <option name="sortByType" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sqlite-jdbc-3.36.0.3.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/console-view-3.3.jar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Connect" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="net.sqlitetutorial.Connect" />
-      <module name="CoffeeProject2021" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bicou\IdeaProjects\coffeeproject2021" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ConnectTests.connect_create_tables_successfully">
     <configuration name="Connect" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="coffee2022.baseobjs.Connect" />
       <module name="CoffeeProject2021" />
@@ -169,22 +166,73 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderManagement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="coffee2022.objs.OrderManagement" />
+    <configuration name="ConnectTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CoffeeProject2021" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="coffee2022.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="coffee2022.tests" />
+      <option name="MAIN_CLASS_NAME" value="coffee2022.tests.ConnectTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Tester" />
+    <configuration name="ConnectTests.connect_create_tables_successfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CoffeeProject2021" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="coffee2022.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="coffee2022.tests" />
+      <option name="MAIN_CLASS_NAME" value="coffee2022.tests.ConnectTests" />
+      <option name="METHOD_NAME" value="connect_create_tables_successfully" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConnectTests.get_last_customer_id" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CoffeeProject2021" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="coffee2022.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="coffee2022.tests" />
+      <option name="MAIN_CLASS_NAME" value="coffee2022.tests.ConnectTests" />
+      <option name="METHOD_NAME" value="get_last_customer_id" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="coffee2022.tests in CoffeeProject2021" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CoffeeProject2021" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="coffee2022.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="coffee2022.tests" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -201,10 +249,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ConnectTests.connect_create_tables_successfully" />
+        <item itemvalue="JUnit.coffee2022.tests in CoffeeProject2021" />
+        <item itemvalue="JUnit.ConnectTests" />
+        <item itemvalue="JUnit.ConnectTests.get_last_customer_id" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.OrderManagement" />
-        <item itemvalue="Application.Tester" />
-        <item itemvalue="Application.Connect" />
       </list>
     </recent_temporary>
   </component>
@@ -220,7 +269,8 @@
       <workItem from="1640034315012" duration="896000" />
       <workItem from="1641956973886" duration="2892000" />
       <workItem from="1642356919701" duration="6997000" />
-      <workItem from="1643152992159" duration="1403000" />
+      <workItem from="1643152992159" duration="8300000" />
+      <workItem from="1643744830372" duration="3120000" />
     </task>
     <task id="LOCAL-00001" summary="Added some todos + gitignore">
       <created>1640034562837</created>

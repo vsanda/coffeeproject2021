@@ -57,9 +57,9 @@ public class Main {
         double tax = om.countTax();
         System.out.printf("\nYour total will be $%.2f + $%.2f sales tax = $%.2f.",  om.countTotal(), om.countTax(),
                 om.countGrandTotal());
-        System.out.println("\nWhat's your name?"); //the name is not being saved..
+        System.out.print("\nWhat's your name?");
 
-        String name = sc.nextLine();
+        String name = sc.next();
 
         // will create new id for the user
         customerId = om.getNewId();
