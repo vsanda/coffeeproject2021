@@ -26,7 +26,6 @@ public class Main {
     private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) throws SQLException {
-        // Note: is exit the right way to go about it or..?
         if (LocalTime.now().isBefore(startHours)) {
             long diff =  LocalTime.now().until(startHours, ChronoUnit.MINUTES);
             if (diff < 60) {
@@ -43,20 +42,22 @@ public class Main {
             System.exit(0);
         }
 
-        System.out.println("Hello, welcome to the store, what can I get for you today?");
+        System.out.println("Hello, welcome to the Steam Beans store! What can I get for you today?");
         OrderManagement om = new OrderManagement();
 
         do {
             om.addItem(showMenu());
             System.out.print("Anything else that you want to order? (Y/N):");
+            // Should we make this case insensitive?
         } while (!sc.next().equals("N"));
 
         System.out.println("Your total order: ");
         om.printList();
         double totalPrice = om.countTotal();
         double tax = om.countTax();
-        System.out.printf("\nYour total will be $%.2f + $%.2f sales tax = $%.2f. What's your name?",  om.countTotal(), om.countTax(),
+        System.out.printf("\nYour total will be $%.2f + $%.2f sales tax = $%.2f.",  om.countTotal(), om.countTax(),
                 om.countGrandTotal());
+        System.out.println("\nWhat's your name?"); //the name is not being saved..
 
         String name = sc.nextLine();
 
